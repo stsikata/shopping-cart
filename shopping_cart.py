@@ -39,13 +39,49 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 selected_products = []
+
 while True:
-    selected_id = input("Please enter product id for each item separately. When finished entering all items, type 'DONE'.")
+    selected_id = input("Please enter product ID for each item separately. When finished entering all items, type 'DONE'.")
+    print(selected_id)
     if selected_id == "DONE":
         break
- #   if #incorrect, print("Whoops, please make sure you've entered the correct product identifier.")
-  #  if # correct, print(products["name"], products["price"])
+    else:
+        for p in products:
+            if str(p["id"]) == str(selected_id):
+                #print(selected_id)
+                selected_products.append(p)
+                print(p["name"], p["price"])
+
+            ###else: ____
+            #if str(item["id"]) != str(selected_id):
+             #   print("Whoops, please make sure you've entered the correct product identifier.")
+  # if # correct, print(products["name"], products["price"])
 #print(products["name"], products["price"])
 
-print(products)
+print("You selected", len(selected_products), "items.")
+# product_ids = [1, 8, 6, 16, 6]
+# print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
+
+
+# print(" ---------------------------------")
+# print("Sedina's Marvelous Groceries") # A grocery store name of your choice
+# print("(555)-555-5555")# A grocery store phone number and/or website URL and/or address of choice
+# print(" ---------------------------------")
+# # The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
+# print("Checkout At:")
+# print(" ---------------------------------")
+# # The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
+# print("Selected Products:")
+# print(" ---------------------------------")
+# # The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
+# print("Subtotal")
+# # The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
+# print("Tax:")
+# # The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
+# print("TOTAL:")
+# print(" ---------------------------------")
+
+# print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
+
+#print(products)
 
