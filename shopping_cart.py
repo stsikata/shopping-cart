@@ -82,7 +82,7 @@ sorted_selected_products= sorted(selected_products, key=itemgetter("name"))
 
 for item in sorted_selected_products:
     #print(item.keys())
-    print(item["name"], ".....", item["price"])
+    print(item["name"], ".....", to_usd(item["price"]))
 #print(sorted_selected_products[0])
 #sorted_products = sorted(products, key=itemgetter("name"))
 
