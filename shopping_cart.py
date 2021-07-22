@@ -38,6 +38,14 @@ def to_usd(my_price):
 
 
 # TODO: write some Python code here to produce the desired output
+selected_products = []
+while True:
+    selected_id = input("Please enter product id for each item separately. When finished entering all items, type 'DONE'.")
+    if selected_id == "DONE":
+        break
+ #   if #incorrect, print("Whoops, please make sure you've entered the correct product identifier.")
+  #  if # correct, print(products["name"], products["price"])
+#print(products["name"], products["price"])
 
 print(products)
 
