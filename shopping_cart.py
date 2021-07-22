@@ -50,9 +50,9 @@ while True:
             if str(p["id"]) == str(selected_id):
                 #print(selected_id)
                 selected_products.append(p)
-print(selected_products)
-print(type(selected_products))
-print(";;;;;")
+# print(selected_products)
+# print(type(selected_products))
+# print(";;;;;")
             
 # selected_product = selected_products[0]
 #####print(selected_product)
@@ -63,9 +63,6 @@ print(";;;;;")
 #print(products["name"], products["price"])
 #print(selected_products)
 print("You selected", len(selected_products), "items.", "Below is your receipt.")
-# product_ids = [1, 8, 6, 16, 6]
-# print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
-#######
 
 print(" ---------------------------------")
 print("Sedina's Marvelous Groceries") # A grocery store name of your choice
@@ -97,16 +94,15 @@ subtotal = sum(prices)
 print("Subtotal:", to_usd(subtotal))
 
 # # The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
-tax = float(subtotal) * 0.0875
+# tax = float(subtotal) * 0.0875
+tax = subtotal * 0.0875 ## I guess I don't need to convert it to a float now that I've removed the dollar sign?
 print("Sales tax:", to_usd(tax))
 
-# print("Tax:", to_usd(tax))
-
 # # The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-#total_price = subtotal + tax
-# print("TOTAL:", to_usd(total_price))
-# print(" ---------------------------------")
+total_price = subtotal + tax
+print("TOTAL:", to_usd(total_price))
 
-# print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
+print(" ---------------------------------")
+print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
 
 #print(products)
