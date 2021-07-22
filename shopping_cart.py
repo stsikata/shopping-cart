@@ -41,27 +41,31 @@ def to_usd(my_price):
 selected_products = []
 
 while True:
-    selected_id = input("Please enter product ID for each item separately. When finished entering all items, type 'DONE'.")
-    print(selected_id)
-    if selected_id == "DONE":
-        break
-    else:
-        for p in products:
+     selected_id = input("Please enter product ID for each item separately. When finished entering all items, type 'DONE'.")
+     #print(selected_id)
+     if selected_id == "DONE":
+         break
+     else:
+         for p in products:
             if str(p["id"]) == str(selected_id):
                 #print(selected_id)
                 selected_products.append(p)
-                print(p["name"], "...", p["price"])
-
+print(selected_products)
+print(type(selected_products))
+print(";;;;;")
+            
+# selected_product = selected_products[0]
+#####print(selected_product)
             ###else: ____
             #if str(item["id"]) != str(selected_id):
              #   print("Whoops, please make sure you've entered the correct product identifier.")
   # if # correct, print(products["name"], products["price"])
 #print(products["name"], products["price"])
-
+#print(selected_products)
 print("You selected", len(selected_products), "items.", "Below is your receipt.")
 # product_ids = [1, 8, 6, 16, 6]
 # print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
-
+#######
 
 print(" ---------------------------------")
 print("Sedina's Marvelous Groceries") # A grocery store name of your choice
@@ -71,9 +75,23 @@ import datetime
 today = datetime.date.today()
 now = datetime.datetime.now()
 print("Checkout At:", today, "at", now) #The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-# print(" ---------------------------------")
+print(" ---------------------------------")
 # # The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
-# print("Selected Products:")
+from operator import itemgetter
+sorted_selected_products= sorted(selected_products, key=itemgetter("name"))
+
+for item in sorted_selected_products:
+    #print(item.keys())
+    print(item["name"], ".....", item["price"])
+#print(sorted_selected_products[0])
+#sorted_products = sorted(products, key=itemgetter("name"))
+
+# products.keys()
+# products.values()
+# products.items()
+
+##print("Selected Products:", selected_product["name"], ".....", to_usd(selected_product["price"]))
+#print("Selected Products:", selected_product["name"], ".....", selected_product["price"])
 # print(" ---------------------------------")
 # # The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
 # print("Subtotal")
