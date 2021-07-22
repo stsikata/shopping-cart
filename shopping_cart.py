@@ -50,7 +50,7 @@ while True:
             if str(p["id"]) == str(selected_id):
                 #print(selected_id)
                 selected_products.append(p)
-                print(p["name"], p["price"])
+                print(p["name"], "...", p["price"])
 
             ###else: ____
             #if str(item["id"]) != str(selected_id):
@@ -58,17 +58,19 @@ while True:
   # if # correct, print(products["name"], products["price"])
 #print(products["name"], products["price"])
 
-print("You selected", len(selected_products), "items.")
+print("You selected", len(selected_products), "items.", "Below is your receipt.")
 # product_ids = [1, 8, 6, 16, 6]
 # print("SHOPPING CART ITEM IDENTIFIERS INCLUDE:", product_ids)
 
 
-# print(" ---------------------------------")
-# print("Sedina's Marvelous Groceries") # A grocery store name of your choice
-# print("(555)-555-5555")# A grocery store phone number and/or website URL and/or address of choice
-# print(" ---------------------------------")
-# # The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-# print("Checkout At:")
+print(" ---------------------------------")
+print("Sedina's Marvelous Groceries") # A grocery store name of your choice
+print("(555)-555-5555")# A grocery store phone number and/or website URL and/or address of choice
+print(" ---------------------------------")
+import datetime
+today = datetime.date.today()
+now = datetime.datetime.now()
+print("Checkout At:", today, "at", now) #The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
 # print(" ---------------------------------")
 # # The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
 # print("Selected Products:")
