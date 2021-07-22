@@ -83,25 +83,30 @@ sorted_selected_products= sorted(selected_products, key=itemgetter("name"))
 for item in sorted_selected_products:
     #print(item.keys())
     print(item["name"], ".....", to_usd(item["price"]))
-#print(sorted_selected_products[0])
-#sorted_products = sorted(products, key=itemgetter("name"))
+   # print(item.values())
 
-# products.keys()
-# products.values()
-# products.items()
-
-##print("Selected Products:", selected_product["name"], ".....", to_usd(selected_product["price"]))
-#print("Selected Products:", selected_product["name"], ".....", selected_product["price"])
-# print(" ---------------------------------")
+from statistics import mean
+print(" ---------------------------------")
 # # The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
-# print("Subtotal")
+#for item in sorted_selected_products:
+    #print(item.keys())
+    #print(to_usd(item["price"]))
+subtotal = [item["price"] for item in sorted_selected_products]
+
+print(to_usd(sum(subtotal)))
+
+##subtotal = []
+##print("Subtotal:")
+##print(to_usd(item["price"]))
 # # The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
-# print("Tax:")
+# tax = subtotal * 0.0875
+# print("Tax:", to_usd(tax))
+
 # # The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-# print("TOTAL:")
+#total_price = subtotal + tax
+# print("TOTAL:", to_usd(total_price))
 # print(" ---------------------------------")
 
 # print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
 
 #print(products)
-
