@@ -41,7 +41,7 @@ def to_usd(my_price):
 selected_products = []
 
 while True:
-     selected_id = input("Please enter product ID for each item separately. When finished entering all items, type 'DONE'.")
+     selected_id = input("Please enter product ID for each item separately. When finished entering all items, type 'DONE'. ")
      #print(selected_id)
      if selected_id == "DONE":
          break
@@ -69,9 +69,10 @@ print("Sedina's Marvelous Groceries") # A grocery store name of your choice
 print("(555)-555-5555")# A grocery store phone number and/or website URL and/or address of choice
 print(" ---------------------------------")
 import datetime
-today = datetime.date.today()
 now = datetime.datetime.now()
-print("Checkout At:", today, "at", now) #The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
+#print(type(now))
+#print("Checkout At:", now) #The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
+print("Checked Out At:", now.strftime("%Y-%m-%d %H:%M:%S"))
 print(" ---------------------------------")
 # # The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
 from operator import itemgetter
@@ -97,10 +98,12 @@ print("Subtotal:", to_usd(subtotal))
 # tax = float(subtotal) * 0.0875
 tax = subtotal * 0.0875 ## I guess I don't need to convert it to a float now that I've removed the dollar sign?
 print("Sales tax:", to_usd(tax))
+print(" ---------------------------------")
+print(" ---------------------------------")
 
 # # The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
 total_price = subtotal + tax
-print("TOTAL:", to_usd(total_price))
+print("**TOTAL:**", to_usd(total_price))
 
 print(" ---------------------------------")
 print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
