@@ -24,6 +24,15 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
+# import random
+# import os
+# from dotenv import load_dotenv
+
+# load_dotenv() #> loads contents of the .env file into the script's environment
+
+# z = os.getenv("tax_rate")
+
+
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes.
@@ -44,12 +53,22 @@ while True:
      selected_id = input("Please enter product ID for each item separately. When finished entering all items, type 'DONE'. ")
      #print(selected_id)
      if selected_id == "DONE":
-         break
+        break
      else:
-         for p in products:
+        matching_product = None
+        for p in products:
             if str(p["id"]) == str(selected_id):
                 #print(selected_id)
-                selected_products.append(p)
+                matching_product = p
+            
+        #print(matching_product)
+        
+        if matching_product:
+            selected_products.append(matching_product)
+        else:
+            print("Whoops, please make sure you've entered the correct product identifier.")         
+            #elif str(p["id"]) != str(selected_id):
+            
 # print(selected_products)
 # print(type(selected_products))
 # print(";;;;;")
