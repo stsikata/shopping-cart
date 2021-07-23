@@ -33,9 +33,9 @@ pip install -r requirements.txt
 
 ## Setup
 
-In your local repository's root directory, create a new file called ".env". Update the contents of the ".env" file to specify your desired ################username:
+In your local repository's root directory, create a new file called ".env". Update the contents of the ".env" file to specify your local sales tax (in decimal form):
 
-    PLAYER_NAME="Sedina Tsikata"
+    TAX_RATE = "0.065"
 
 ## Usage
 

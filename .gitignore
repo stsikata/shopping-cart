@@ -102,6 +102,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+### ignore environment variables in the ".env" file:
+.env
 .env
 .venv
 env/

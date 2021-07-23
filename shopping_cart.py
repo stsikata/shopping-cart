@@ -24,13 +24,13 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
-# import random
-# import os
-# from dotenv import load_dotenv
+import random
+import os
+from dotenv import load_dotenv
 
-# load_dotenv() #> loads contents of the .env file into the script's environment
+load_dotenv() #> loads contents of the .env file into the script's environment
 
-# z = os.getenv("tax_rate")
+z = os.getenv("TAX_RATE")
 
 
 def to_usd(my_price):
@@ -67,11 +67,7 @@ while True:
             selected_products.append(matching_product)
         else:
             print("Whoops, please make sure you've entered the correct product identifier.")         
-            #elif str(p["id"]) != str(selected_id):
             
-# print(selected_products)
-# print(type(selected_products))
-# print(";;;;;")
             
 # selected_product = selected_products[0]
 #####print(selected_product)
@@ -115,7 +111,9 @@ print("Subtotal:", to_usd(subtotal))
 
 # # The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
 # tax = float(subtotal) * 0.0875
-tax = subtotal * 0.0875 ## I guess I don't need to convert it to a float now that I've removed the dollar sign?
+#tax = subtotal * 0.0875 ## I guess I don't need to convert it to a float now that I've removed the dollar sign?
+tax = subtotal * float(z)
+
 print("Sales tax:", to_usd(tax))
 print(" ---------------------------------")
 print(" ---------------------------------")
