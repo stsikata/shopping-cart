@@ -92,6 +92,10 @@ print(" ---------------------------------")
 # # The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
 from operator import itemgetter
 sorted_selected_products= sorted(selected_products, key=itemgetter("name"))
+print("********************")
+print(sorted_selected_products)
+print(type(sorted_selected_products))
+
 
 for item in sorted_selected_products:
     #print(item.keys())
@@ -123,6 +127,65 @@ total_price = subtotal + tax
 print("**TOTAL:**", to_usd(total_price))
 
 print(" ---------------------------------")
-print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
+want_receipt = input("Would you like a receipt? 'y' or 'n':")
+if want_receipt == "y":
+    CUSTOMER_ADDRESS = input("Please enter your email address:")
+    print("Thank you, please come back soon:)")
+else:
+    print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
 
 #print(products)
+
+######## EMAIL
+#import os
+#from dotenv import load_dotenv
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+load_dotenv()
+
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+SENDGRID_TEMPLATE_ID = os.getenv("SENDGRID_TEMPLATE_ID", default="OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'")
+SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+
+# this must match the test data structure
+receipt_data = {
+    "total_price_usd": to_usd(total_price),
+    "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
+    "products": sorted_selected_products.keys()#, sorted_selected_products["name"]
+    # "products":[
+    #     {"id":1, "name": "Product 1"},
+    #     {"id":2, "name": "Product 2"},
+    #     {"id":3, "name": "Product 3"},
+    #     {"id":2, "name": "Product 2"},
+    #     {"id":1, "name": "Product 1"}
+   # ]
+} # or construct this dictionary dynamically based on the results of some other process :-D
+
+client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+print("CLIENT:", type(client))
+
+# subject = "Your Receipt from Sedina's Marvelous Groceries"
+
+# html_content = "Thank you for shopping at Sedina's Marvelous Groceries"
+# print("HTML:", html_content)
+
+# FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
+# ... but we can customize the `to_emails` param to send to other addresses
+message = Mail(from_email=SENDER_ADDRESS, to_emails=CUSTOMER_ADDRESS) #subject=subject, html_content=html_content)
+message.template_id = SENDGRID_TEMPLATE_ID
+message.dynamic_receipt_data = receipt_data
+print("MESSAGE:", type(message))
+
+try:
+    response = client.send(message)
+
+    print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+    print(response.status_code) #> 202 indicates SUCCESS
+    print(response.body)
+    print(response.headers)
+
+except Exception as err:
+    print(type(err))
+    print(err)
+

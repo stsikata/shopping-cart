@@ -33,9 +33,23 @@ pip install -r requirements.txt
 
 ## Setup
 
-In your local repository's root directory, create a new file called ".env". Update the contents of the ".env" file to specify your local sales tax (in decimal form):
+In your local repository's root directory, create a new file called ".env".
+
+Update the contents of the ".env" file to specify your local sales tax (in decimal form):
 
     TAX_RATE = "0.065"
+
+Update the contents of the ".env" file to specify your sendgrid API key:
+  
+    SENDGRID_API_KEY = "alkdjsl2498274js"
+
+Update the contents of the ".env" file to specify your sender's email address:
+
+    SENDER_ADDRESS = "soandso@gmail.com"
+
+Update the contents of the ".env" file to specify your sendgrid email template:
+
+    SENDGRID_TEMPLATE_ID = "adjsdlk891293"
 
 ## Usage
 
