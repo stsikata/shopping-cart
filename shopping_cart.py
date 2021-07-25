@@ -93,8 +93,8 @@ print(" ---------------------------------")
 from operator import itemgetter
 sorted_selected_products= sorted(selected_products, key=itemgetter("name"))
 print("********************")
-print(sorted_selected_products)
-print(type(sorted_selected_products))
+# print(sorted_selected_products)
+# print(type(sorted_selected_products))
 
 
 for item in sorted_selected_products:
@@ -134,6 +134,17 @@ if want_receipt == "y":
 else:
     print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
 
+
+print("********")
+
+
+print(type(selected_products))
+print(selected_products)
+
+print(type(sorted_selected_products))
+print(sorted_selected_products)
+
+print("********")
 #print(products)
 
 ######## EMAIL
@@ -148,11 +159,27 @@ SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env v
 SENDGRID_TEMPLATE_ID = os.getenv("SENDGRID_TEMPLATE_ID", default="OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'")
 SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
 
-# this must match the test data structure
-receipt_data = {
+template_data = {
     "total_price_usd": to_usd(total_price),
     "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
-    "products": sorted_selected_products.keys()#, sorted_selected_products["name"]
+    "products":
+        sorted_selected_products
+}
+
+# this must match the test data structure
+###
+# receipt_data = {
+#      "total_price_usd": "$1.00", #to_usd(total_price),
+#      "human_friendly_timestamp": "July 4th, 2099 10:00 AM", #now.strftime("%Y-%m-%d %H:%M:%S"),
+#      "products": selected_products
+#      ]
+# }
+##
+
+# receipt_data = {
+#     "total_price_usd": to_usd(total_price),
+#     "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
+#     "sort_selected": sorted_selected_products[0]
     # "products":[
     #     {"id":1, "name": "Product 1"},
     #     {"id":2, "name": "Product 2"},
@@ -160,7 +187,7 @@ receipt_data = {
     #     {"id":2, "name": "Product 2"},
     #     {"id":1, "name": "Product 1"}
    # ]
-} # or construct this dictionary dynamically based on the results of some other process :-D
+#} # or construct this dictionary dynamically based on the results of some other process :-D
 
 client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
 print("CLIENT:", type(client))
@@ -174,7 +201,7 @@ print("CLIENT:", type(client))
 # ... but we can customize the `to_emails` param to send to other addresses
 message = Mail(from_email=SENDER_ADDRESS, to_emails=CUSTOMER_ADDRESS) #subject=subject, html_content=html_content)
 message.template_id = SENDGRID_TEMPLATE_ID
-message.dynamic_receipt_data = receipt_data
+message.dynamic_template_data = template_data
 print("MESSAGE:", type(message))
 
 try:

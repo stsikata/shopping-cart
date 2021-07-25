@@ -51,6 +51,14 @@ Update the contents of the ".env" file to specify your sendgrid email template:
 
     SENDGRID_TEMPLATE_ID = "adjsdlk891293"
 
+<!-- When inputing your template data for the email (line 162), use below as a reference: 
+template_data = {
+    "total_price_usd": to_usd(total_price),
+    "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
+    "products":
+        sorted_selected_products
+} -->
+
 ## Usage
 
 Run the game script:
