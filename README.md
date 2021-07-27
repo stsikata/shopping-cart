@@ -66,4 +66,4 @@ Run the game script:
 ```py
 python shopping_cart.py
 ```
-If using a csv file instead of products data embedded in code, create a new folder in the repo called "data" and add your the contents of your csv file (or the file itself) into it, naming it "products.csv". Then un-comment lines 6, 8, and 10 and comment out lines 12-33.
+If using a csv file instead of products data embedded in code, create a new folder in the repo called "data". Copy the provided "default_products.csv" file into your local repo as "data/products.csv". Un-comment lines 6, 8, and 10 and then comment out lines 12-33.
