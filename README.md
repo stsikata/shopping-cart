@@ -41,15 +41,15 @@ Update the contents of the ".env" file to specify your local sales tax (in decim
 
 Update the contents of the ".env" file to specify your sendgrid API key:
   
-    SENDGRID_API_KEY = "alkdjsl2498274js"
+    SENDGRID_API_KEY = "numbersandletters123"
 
 Update the contents of the ".env" file to specify your sender's email address:
 
-    SENDER_ADDRESS = "soandso@gmail.com"
+    SENDER_ADDRESS = "youremail@email.com"
 
 Update the contents of the ".env" file to specify your sendgrid email template:
 
-    SENDGRID_TEMPLATE_ID = "adjsdlk891293"
+    SENDGRID_TEMPLATE_ID = "numbersandletters123"
 
 <!-- When inputing your template data for the email (line 162), use below as a reference: 
 template_data = {
@@ -66,3 +66,4 @@ Run the game script:
 ```py
 python shopping_cart.py
 ```
+If using a csv file instead of products data embedded in code, create a new folder in the repo called "data" and add your the contents of your csv file (or the file itself) into it, naming it "products.csv". Then un-comment lines 6, 8, and 10 and comment out lines 12-33.

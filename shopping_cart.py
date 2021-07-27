@@ -1,10 +1,13 @@
 # shopping_cart.py
+import os
+from pandas import read_csv
+import random
 
-##from pandas import read_csv
+# csv_file_path = os.path.join(os.path.dirname(__file__), "data" , "products.csv")
 
-##products_df = read_csv("data/products.csv")
+# products_df = read_csv(csv_file_path)
 
-##products = products_df.to_dict("records")
+# products = products_df.to_dict("records")
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -30,8 +33,6 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
-import random
-import os
 from dotenv import load_dotenv
 
 load_dotenv() #> loads contents of the .env file into the script's environment

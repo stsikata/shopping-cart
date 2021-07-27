@@ -4,4 +4,4 @@ python-dotenv # see: https://github.com/theskumar/python-dotenv
 
 sendgrid
 
-pandas ## if using a csv file
+pandas # if using a csv file
