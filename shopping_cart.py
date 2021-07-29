@@ -121,17 +121,15 @@ total_price = subtotal + tax
 print("**TOTAL:**", to_usd(total_price))
 
 print(" ---------------------------------")
-want_receipt = input("Would you like a receipt? 'y' or 'n':")
+want_receipt = input("Would you like a receipt? 'y' or 'n': ")
 if want_receipt == "y":
     CUSTOMER_ADDRESS = input("Please enter your email address:")
     print("Thank you, please come back soon:)")
 else:
     print("Thank you, please come back soon :)")# A friendly message thanking the customer and/or encouraging the customer to shop again
-
+print("**********************************")
 
 ####### EMAIL
-#import os
-#from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
