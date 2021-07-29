@@ -56,12 +56,12 @@ You may use the [sendgrid package](https://github.com/prof-rossetti/intro-to-pyt
         SENDGRID_TEMPLATE_ID = "numbersandletters123"
 
 When inputing your template data for the email (lines 142-147), use below as a reference: 
-template_data = {
-    "total_price_usd": to_usd(total_price),
-    "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
-    "products":
-        sorted_selected_products
-}
+      template_data = {
+          "total_price_usd": to_usd(total_price),
+          "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
+          "products":
+              sorted_selected_products
+      }
 
 ## Usage
 
